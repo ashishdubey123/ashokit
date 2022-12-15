@@ -11,19 +11,15 @@ pipeline {
         }
         stage('mvn clean'){
             steps{
-                sh 'mvn clean package'
+                sh 'mvn clean'
             }
         }
-          stage('mvn testing'){
-            steps{
-                sh 'mvn test'
-            }
-        }
+    
         stage('deploy to container'){
             steps{
                 sshagent(['ubuntu']) {
                    sh """ 
-                    scp -o StrictHostKeyChecking=no **/*.war ubuntu@172.31.28.213:/tmp/tomcat/webapps
+                    scp -o StrictHostKeyChecking=no **/*.war ubuntu@172.31.28.213:/tmp
                     """
                 }
             }
