@@ -19,7 +19,7 @@ pipeline {
             steps{
                 sshagent(['ubuntu']) {
                    sh """ 
-                    scp -o StrictHostKeyChecking=no **/*.war ubuntu@172.31.28.213:/tmp
+                    scp -o StrictHostKeyChecking=no **/*.war ubuntu@172.31.28.213:/tmp/tomcat/webapps
                     """
                 }
             }
