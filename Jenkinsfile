@@ -14,7 +14,7 @@ pipeline {
                 sh 'mvn clean'
             }
         }
-        stage('mvn clean'){
+        stage('deploy to container'){
             steps{
                 sshagent(['ubuntu']) {
                    sh """ 
