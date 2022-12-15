@@ -14,6 +14,15 @@ pipeline {
                 sh 'mvn clean'
             }
         }
+        stage('mvn clean'){
+            steps{
+                sshagent(['ubuntu']) {
+                   sh """ 
+                    scp -o StrictHostKeyChecking=no **/*.war ubuntu@172.31.28.213:/tmp/tomcat/webapps
+                    """
+                }
+            }
+        }
         
     }
 }
